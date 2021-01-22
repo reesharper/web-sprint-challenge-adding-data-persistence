@@ -28,8 +28,8 @@ function find() {
 function findById(id) {
   return db('projects')
   .where('project_id', id)
-  .then(projects => {
-    return projects.map((project) => ProjectBoolean(project))
+  .then(project => {
+    return ProjectBoolean(project)
   })
 }
 
