@@ -28,6 +28,9 @@ function find() {
 function findById(id) {
   return db('projects')
   .where('project_id', id)
+  .then(projects => {
+    return projects.map((project) => ProjectBoolean(project))
+  })
 }
 
 async function add(project) {
