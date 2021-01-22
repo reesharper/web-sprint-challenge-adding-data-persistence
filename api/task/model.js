@@ -31,8 +31,8 @@ function findById(id) {
   return db('tasks')
   // .select('task_completed', 'task_description', 'task_notes')
   .where('task_id', id)
-  .then(tasks => {
-    return tasks.map((task) => TaskBoolean(task))
+  .then(task => {
+    return TaskBoolean(task)
   })
 }
 
