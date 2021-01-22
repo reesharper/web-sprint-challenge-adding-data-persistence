@@ -10,12 +10,12 @@ module.exports = {
 
 function find() {
   return db('projects')
-  .case
+  .case()
     .when("project_completed", 1)
     .then("project_completed",true)
     .when('project_completed', 0)
     .then("project_completed",false)
-  .end
+  .end()
 }
 
 function findById(id) {
