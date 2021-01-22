@@ -20,7 +20,7 @@ router.post('/', (req, res) => {
 
   Task.add(taskData)
     .then(task => {
-      res.status(201).json(taskData);
+      res.status(201).json(task);
     })
     .catch(err => {
       res.status(500).json({ message: 'Failed to create new task' });

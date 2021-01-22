@@ -19,10 +19,12 @@ function TaskBoolean(task) {
 }
 
 function find() {
-  return db('tasks')
-    .then(tasks => {
-      return tasks.map((task) => TaskBoolean(task))
-    })
+  return db('tasks as t')
+    .join('projects as p', 'p.project_id', 't.project_id')
+    .select('p.project_name', 'p.project_description')
+      .then(tasks => {
+        return tasks.map((task) => TaskBoolean(task))
+      })
 }
 
 function findById(id) {
