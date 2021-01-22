@@ -28,6 +28,9 @@ function find() {
 function findById(id) {
   return db('tasks')
   .where('task_id', id)
+  .then(tasks => {
+    return tasks.map((task) => TaskBoolean(task))
+  })
 }
 
 async function add(resource) {
