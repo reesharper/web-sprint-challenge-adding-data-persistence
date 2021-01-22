@@ -12,9 +12,9 @@ function find() {
   return db('projects')
   .case
     .when("project_completed", 1)
-    .then(true)
+    .then("project_completed",true)
     .when('project_completed', 0)
-    .then(false)
+    .then("project_completed",false)
   .end
 }
 
