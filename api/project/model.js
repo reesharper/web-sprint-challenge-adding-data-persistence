@@ -27,10 +27,10 @@ function find() {
 
 function findById(id) {
   return db('projects')
-  // .select('project_completed', 'project_description', 'project_name')
+  .select('project_completed', 'project_description', 'project_name')
   .where('project_id', id)
     .then(project => {
-      return {...project, project_completed: intToBoolean(project.project_completed)}
+      return ProjectBoolean({project})
     })
 }
 
