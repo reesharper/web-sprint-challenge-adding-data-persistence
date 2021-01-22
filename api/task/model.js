@@ -21,7 +21,7 @@ function TaskBoolean(task) {
 function find() {
   return db('tasks as t')
     .join('projects as p', 'p.project_id', 't.project_id')
-    .select('p.project_name', 'p.project_description')
+    .select('p.project_name', 'p.project_description', 't.task_description', 't.task_notes', 't.task_completed')
       .then(tasks => {
         return tasks.map((task) => TaskBoolean(task))
       })
@@ -29,7 +29,7 @@ function find() {
 
 function findById(id) {
   return db('tasks')
-  .select('task_completed', 'task_description', 'task_notes')
+  // .select('task_completed', 'task_description', 'task_notes')
   .where('task_id', id)
   .then(tasks => {
     return tasks.map((task) => TaskBoolean(task))
