@@ -12,10 +12,17 @@ function intToBoolean(int) {
   return int === 1 ? true : false;
 }
 
+function ProjectBoolean(project) {
+  return {
+    ...project,
+    project_completed: intToBoolean(project.project_completed),
+  };
+}
+
 function find() {
   return db('projects')
     .then(projects => {
-      return projects.map((project) => intToBoolean(project))
+      return projects.map((project) => ProjectBoolean(project))
     })
 }
 
