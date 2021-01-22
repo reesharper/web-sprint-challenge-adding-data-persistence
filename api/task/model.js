@@ -4,12 +4,25 @@ const db = require('../../data/dbConfig')
 module.exports = {
   find,
   findById,
-  add,
+  add
+}
 
+function intToBoolean(int) {
+  return int === 1 ? true : false;
+}
+
+function TaskBoolean(task) {
+  return {
+    ...task,
+    task_completed: intToBoolean(task.task_completed),
+  };
 }
 
 function find() {
   return db('tasks')
+    .then(tasks => {
+      return tasks.map((task) => TaskBoolean(task))
+    })
 }
 
 function findById(id) {

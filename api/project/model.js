@@ -4,8 +4,7 @@ const db = require('../../data/dbConfig')
 module.exports = {
   find,
   findById,
-  add,
-  intToBoolean
+  add
 }
 
 function intToBoolean(int) {
