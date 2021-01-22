@@ -5,17 +5,18 @@ module.exports = {
   find,
   findById,
   add,
+  intToBoolean
+}
 
+function intToBoolean(int) {
+  return int === 1 ? true : false;
 }
 
 function find() {
   return db('projects')
-  // .case()
-  //   .when("project_completed", 1)
-  //   .then("project_completed",true)
-  //   .when('project_completed', 0)
-  //   .then("project_completed",false)
-  // .end()
+    .then(projects => {
+      return projects.map((project) => intToBoolean(project))
+    })
 }
 
 function findById(id) {
