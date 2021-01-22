@@ -20,7 +20,7 @@ router.post('/', (req, res) => {
 
   Project.add(projectData)
     .then(project => {
-      res.status(201).json(project);
+      res.status(201).json(project.map((project) => Project.ProjectBoolean(project)));
     })
     .catch(err => {
       res.status(500).json({ message: 'Failed to create new project' });

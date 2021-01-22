@@ -4,7 +4,8 @@ const db = require('../../data/dbConfig')
 module.exports = {
   find,
   findById,
-  add
+  add,
+  ProjectBoolean
 }
 
 function intToBoolean(int) {
@@ -29,9 +30,9 @@ function findById(id) {
   return db('projects')
   .select('project_completed', 'project_description', 'project_name')
   .where('project_id', id)
-    .then(project => {
-      return ProjectBoolean(project)
-    })
+    // .then(project => {
+    //   return ProjectBoolean(project)
+    // })
 }
 
 async function add(project) {
